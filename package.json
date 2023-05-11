@@ -1,0 +1,30 @@
+{
+  "name": "awesome-app-2023a",
+  "version": "0.0.0",
+  "description": "Learning app of ExpressJS",
+  "type": "module",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CrazyD34/awesome-app-2023a.git"
+  },
+  "engines": {
+    "node": "20.0",
+    "npm": "9.6.x"
+  },
+  "keywords": [
+    "Express",
+    "ITGAM",
+    "JavaScript",
+    "DWPCI"
+  ],
+  "author": "davidoisrael26@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CrazyD34/awesome-app-2023a/issues"
+  },
+  "homepage": "https://github.com/CrazyD34/awesome-app-2023a#readme"
+}
