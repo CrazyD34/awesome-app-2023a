@@ -15,7 +15,7 @@ app.use( (request,response,next) => {
 })
 
 //Los middleware de propositos especificos se colocaran al inicio, luego los middleware genericos
-app.use('/about', (request, response) => {
+app.get('/about', (request, response) => {
     response.send(`
     <h1 style="color:teal">About...</h1>
     <p>Esta es una pagina creada para aprender 
@@ -25,13 +25,11 @@ app.use('/about', (request, response) => {
 });
 
 //GET /add-product
-app.use('/add-products',(request,response,next) => {
+//Eliminamos lo generico de use - directamente el verbo GET POST, etc.
+app.get('/add-products',(request,response,next) => {
     //Sirviendo el formulario
     //En el form se indica la ruta - metodo HTML
     //En los imput siempre hay que colocarles un name
-    //Si la peticion es POST
-    if(request.method === "POST") return next();
-    //De lo contrario sirve el formulario
     console.log("⏰ Sirviendo un formulario");
     response.send(`
     <form action="/add-products" method="POST">
@@ -48,7 +46,7 @@ app.use('/add-products',(request,response,next) => {
 
 //Creando un middleware que se ejecuta con el POST a la ruta add-products
 //POST /add-product
-app.use('/add-products', (request,response) => {
+app.post('/add-products', (request,response) => {
     //Realizando una extracción de los datos del formulario anterior
     for(const prop in request.body)
     {
