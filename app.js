@@ -4,19 +4,17 @@ import express from 'express';
 //Crear una instancia de express
 const app = express(); //Express es un middleware, incluyen (request,response)
 
-//Registrando el primer middleware con una funcion estos son middleware genericos
-app.use((request,response,next) => {
-    console.log("Este es el primer middleware");
-    next();
-});
+//--16/05/23 -- Middleware de parseo de datos del cliente en urlencoded
+app.use(express.urlencoded({extended: true}));
 
+//Registrando peticion entrante
 app.use( (request,response,next) => {
     console.log("Registrando peticion entrante");
     console.log(`${request.method} - ${request.url}`)
     next();
 })
 
-//MiddleWare de proposito espeficico iran al principio?
+//Los middleware de propositos especificos se colocaran al inicio, luego los middleware genericos
 app.use('/about', (request, response) => {
     response.send(`
     <h1 style="color:teal">About...</h1>
@@ -24,6 +22,41 @@ app.use('/about', (request, response) => {
     desarrollo web en FullStack con JS</p>
     <p>Otro parrafo</p>
     `);
+});
+
+//GET /add-product
+app.use('/add-products',(request,response,next) => {
+    //Sirviendo el formulario
+    //En el form se indica la ruta - metodo HTML
+    //En los imput siempre hay que colocarles un name
+    //Si la peticion es POST
+    if(request.method === "POST") return next();
+    //De lo contrario sirve el formulario
+    console.log("⏰ Sirviendo un formulario");
+    response.send(`
+    <form action="/add-products" method="POST">
+        <label for="title">Product Title</label>
+        <input type="text" name="title">
+        <br>
+        <label for="description">Product Description</label>
+        <input type="text" name="description">
+        <br>
+        <button type="submit">Add Product</button>
+    </form>
+    `);
+});
+
+//Creando un middleware que se ejecuta con el POST a la ruta add-products
+//POST /add-product
+app.use('/add-products', (request,response) => {
+    //Realizando una extracción de los datos del formulario anterior
+    for(const prop in request.body)
+    {
+        //request.body[prop] = Investiga las propiedades disponibles el request en la parte del body
+        console.log(`PROP: ${request.body[prop]}`);
+    }
+    //Redireccionamiento - Pideme esta otra pagina Al terminar se envia a el usuario a la raiz
+    response.redirect('/');
 });
 
 //Respondiendo al cliente
