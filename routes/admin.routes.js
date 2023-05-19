@@ -1,19 +1,13 @@
 //Importando el router de express
 import Router from 'express';
+import path from 'path';
 const router = Router();
 
 //GET /add-products
-router.get('/add-products', (request,response) => {
-    //Si la peticion recibida es POST
-    if(request.method === "POST") return next();
+router.get('/add-products', (request,response,next) => {
     //Se muestra el formulario
     console.log("📝Mostrando el formulario");
-    response.send(`
-    <form action="/add-products" method="POST">
-        <input type="text" name="Title">
-        <button type="submit">Add a product</button>
-    </form>
-    `);
+    response.sendFile(path.resolve('views','add-products.html'));
 })
 
 //Procesando la informacion recibida del formulario
