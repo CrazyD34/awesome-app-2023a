@@ -18,4 +18,8 @@ router.get('/about', (request,response) =>{
     `);
 });
 
+router.use((request,response) => {
+    response.sendFile(path.resolve('views','notfound.html'));
+})
+
 export default router;

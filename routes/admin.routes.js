@@ -18,5 +18,6 @@ router.post('/add-products', (request,response) =>{
     response.redirect('/');
 });
 
+
 //Exportando el enrutador a la "main/app.js"
 export default router;
