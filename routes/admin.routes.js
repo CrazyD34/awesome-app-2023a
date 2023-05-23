@@ -4,6 +4,7 @@ import path from 'path';
 const router = Router();
 
 //GET /add-products
+//GET /admin/add-products
 router.get('/add-products', (request,response,next) => {
     //Se muestra el formulario
     console.log("📝Mostrando el formulario");

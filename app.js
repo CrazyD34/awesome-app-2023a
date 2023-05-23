@@ -12,7 +12,9 @@ const app = express(); //Express es un middleware, incluyen (request,response)
 app.use(express.urlencoded({extended: true}));
 
 //Se agrega ruta del administrador
-app.use(adminRoute);
+//Estableciendo un candado el cual indicara que se accedera a la ruta siempre
+//y cuando sea admin
+app.use('/admin',adminRoute);
 
 //Agregando la ruta de la tienda
 app.use(shopRoute);
