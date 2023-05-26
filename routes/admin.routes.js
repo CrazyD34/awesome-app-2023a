@@ -6,6 +6,8 @@ const router = Router();
 //importando ROOT_DIR
 import { ROOT_DIR } from '../helpers/paths.js';    
 
+//Base de datos en un arreglo
+export const products = [];
 
 //GET /add-products
 //GET /admin/add-products
@@ -20,8 +22,10 @@ router.get('/add-products', (request,response,next) => {
 //Procesando la informacion recibida del formulario
 //POST /add-product
 router.post('/add-products', (request,response) =>{
-    //Extrayendo los parametros en la peticion
-    console.log(request.body);
+    //Desestructuracion de "name" de body en la peticion
+    const {title} = request.body
+    products.push(title);
+    //Redireccionando a la pagina raiz
     response.redirect('/');
 });
 
