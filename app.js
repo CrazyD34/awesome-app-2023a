@@ -5,8 +5,18 @@ import express from 'express';
 import adminRoute from './routes/admin.routes.js';
 import shopRoute from './routes/shop.routes.js';
 
+//Importando root directory
+//El servidor de estaticos es el primer middleware a ejecutar
+import { ROOT_DIR } from './helpers/paths.js';
+
+//Importando path para las rutas
+import path from 'path';
+
 //Crear una instancia de express
 const app = express(); //Express es un middleware, incluyen (request,response)
+
+//Servidor de estaticos middlware
+app.use(express.static(path.join(ROOT_DIR, 'public')));
 
 //--16/05/23 -- Middleware de parseo de datos del cliente en urlencoded
 app.use(express.urlencoded({extended: true}));
