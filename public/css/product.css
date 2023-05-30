@@ -1,8 +1,6 @@
 .form-control
 {
-    width: 20rem;
-    max-width: 90%;
-    margin: auto;
+    margin: 1rem 0;
 }
 
 .form-control label,
@@ -37,5 +35,14 @@ button
 button:hover,
 button:active
 {
+    border: 1px solid #6fb3b8;
+    color: #C2EDCE;
     background-color: #388007;
+}
+
+.product-form
+{
+    width: 20rem;
+    max-width: 90%;
+    margin: auto;
 }
