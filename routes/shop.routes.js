@@ -11,7 +11,7 @@ import { products } from './admin.routes.js';
 router.get('/', (request,response) =>{
     console.log("Sirviendo la ruta raiz 🍽️");
     console.log(products);
-    response.sendFile(path.resolve('views','shop.html'))
+    response.render('shop');
 });
 
 router.get('/about', (request,response) =>{
@@ -23,7 +23,7 @@ router.get('/about', (request,response) =>{
 });
 
 router.use((request,response) => {
-    response.sendFile(path.resolve('views','notfound.html'));
+    response.render('notfound');
 })
 
 export default router;

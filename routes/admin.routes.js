@@ -12,11 +12,9 @@ export const products = [];
 //GET /add-products
 //GET /admin/add-products
 router.get('/add-products', (request,response,next) => {
-    //Se muestra el formulario
-    console.log("📝Mostrando el formulario");
-    console.log(`ROOT_DIR: ${ROOT_DIR}`);
-    //Une las rutas. Directorio raiz luego carpeta views y luego archivo html
-    response.sendFile(path.join(ROOT_DIR,'views','add-products.html'));
+   //Sirviendo el formulario con hbs
+   console.log("📣Mostrando el formulario");
+   response.render('add-products');
 })
 
 //Procesando la informacion recibida del formulario
