@@ -14,7 +14,7 @@ export const products = [];
 router.get('/add-products', (request,response,next) => {
    //Sirviendo el formulario con hbs
    console.log("📣Mostrando el formulario");
-   response.render('add-products',{addProducts: 'active', docTitle:"Add Products"});
+   response.render('add-products',{addProducts: 'active',viewStyle: '/css/add-products.css', docTitle:"Add Products"});
 })
 
 //Procesando la informacion recibida del formulario

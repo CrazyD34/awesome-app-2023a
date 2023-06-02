@@ -2,16 +2,12 @@
 import Router from 'express';
 const router = Router();
 
-//Importando el gestor de rutas
-import path from 'path';
-
 //Importando arreglos de productos
 import { products } from './admin.routes.js';
 
-router.get('/', (request,response) =>{
-    console.log("Sirviendo la ruta raiz 🍽️");
-    console.log(products);
-    response.render('shop',{shop:'active', docTitle:"Shop"});
+router.get("/", (request,response) =>{
+    console.log("📒 Sirviendo recurso: 'shop.html'");
+    response.render('shop', {shop: 'active', docTitle:"Tienda", viewStyle: "/css/product.css",products});
 });
 
 router.get('/about', (request,response) =>{
