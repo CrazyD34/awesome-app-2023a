@@ -7,7 +7,7 @@ import { products } from './admin.routes.js';
 
 router.get("/", (request,response) =>{
     console.log("📒 Sirviendo recurso: 'shop.html'");
-    response.render('shop', {shop: 'active', docTitle:"Tienda", viewStyle: "/css/product.css",products});
+    response.render('shop', {shop: 'active', docTitle:"Tienda", viewStyle: "/css/product.css", isProductsListEmpty: products.length === 0,products});
 });
 
 router.get('/about', (request,response) =>{
