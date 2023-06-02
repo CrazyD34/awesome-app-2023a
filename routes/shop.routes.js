@@ -11,7 +11,7 @@ import { products } from './admin.routes.js';
 router.get('/', (request,response) =>{
     console.log("Sirviendo la ruta raiz 🍽️");
     console.log(products);
-    response.render('shop',{shop:'active'});
+    response.render('shop',{shop:'active', docTitle:"Shop"});
 });
 
 router.get('/about', (request,response) =>{
