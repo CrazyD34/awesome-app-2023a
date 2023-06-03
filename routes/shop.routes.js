@@ -2,14 +2,13 @@
 import Router from 'express';
 const router = Router();
 
-//Importando arreglos de productos
-import { products } from './admin.routes.js';
+//Importando controlador de productos
+import { getShowProducts } from '../controllers/products.controller.js';
 
-router.get("/", (request,response) =>{
-    console.log("📒 Sirviendo recurso: 'shop.html'");
-    response.render('shop', {shop: 'active', docTitle:"Tienda", viewStyle: "/css/product.css", isProductsListEmpty: products.length === 0,products});
-});
+//Refactorizando los productos
+router.get('/',getShowProducts);
 
+//Obtener la pagina about
 router.get('/about', (request,response) =>{
     console.log("Sirviendo la ruta 'acerca de'");
     response.send(`

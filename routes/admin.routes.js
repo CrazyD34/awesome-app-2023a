@@ -5,27 +5,18 @@ const router = Router();
 
 //importando ROOT_DIR
 import { ROOT_DIR } from '../helpers/paths.js';    
-
+//Importando controlador
+import { getAddProduct, postAddProduct} from '../controllers/products.controller.js';
 //Base de datos en un arreglo
 export const products = [];
 
 //GET /add-products
 //GET /admin/add-products
-router.get('/add-products', (request,response,next) => {
-   //Sirviendo el formulario con hbs
-   console.log("📣Mostrando el formulario");
-   response.render('add-products',{addProducts: 'active',viewStyle: '/css/add-products.css', docTitle:"Add Products"});
-})
+router.get('/add-products', getAddProduct);
 
 //Procesando la informacion recibida del formulario
 //POST /add-product
-router.post('/add-products', (request,response) =>{
-    //Desestructuracion de "name" de body en la peticion
-    const {title} = request.body
-    products.push(title);
-    //Redireccionando a la pagina raiz
-    response.redirect('/');
-});
+router.post('/add-products', postAddProduct);
 
 
 //Exportando el enrutador a la "main/app.js"
