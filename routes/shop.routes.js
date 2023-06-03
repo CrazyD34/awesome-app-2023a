@@ -5,6 +5,9 @@ const router = Router();
 //Importando controlador de productos
 import { getShowProducts } from '../controllers/products.controller.js';
 
+//Importando error de pagina
+import { getErrorPage } from '../controllers/httpError.controller.js';
+
 //Refactorizando los productos
 router.get('/',getShowProducts);
 
@@ -17,8 +20,6 @@ router.get('/about', (request,response) =>{
     `);
 });
 
-router.use((request,response) => {
-    response.render('notfound');
-})
+router.use(getErrorPage);
 
 export default router;
