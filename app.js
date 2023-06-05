@@ -55,5 +55,5 @@ const ip = "0.0.0.0";
 
 //Creando el servidor utilizando express y ejecutandolo
 app.listen(port,ip, (err) => {
-    console.log("👂 Sirviendo en http://localhost:3000");
+    console.log("👂 Desplegando servidor en http://localhost:3000");
 })
