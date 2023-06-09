@@ -17,6 +17,7 @@ export const postAddProduct = (request,response) =>
 {
     const {title} = request.body;
     products.push(title);
+    console.log(products);
     return response.redirect('/');
 }
 
